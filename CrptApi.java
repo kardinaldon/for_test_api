@@ -63,4 +63,31 @@ private class CrptApi {
             }
         }
     }
+    public static class ApiModel {
+            private static ApiModel INSTANCE;
+            private String jsonApiModel;
+
+            private ApiModel() {}
+
+            public static ApiModel getInstance() {
+                if(INSTANCE == null) {
+                    INSTANCE = new ApiModel();
+
+                    ObjectMapper mapper = new ObjectMapper();
+                    ObjectNode jsonNode = mapper.createObjectNode();
+                    jsonNode.put("document_format", "MANUAL");
+                    jsonNode.put("product_document",
+                            Base64.getEncoder().encodeToString(("product_document").getBytes()));
+                    jsonNode.put("product_group", "1 clothes");
+                    jsonNode.put("type", "LP_INTRODUCE_GOODS");
+
+                    INSTANCE.jsonApiModel = mapper.writeValueAsString(jsonNode);
+                }
+                return INSTANCE;
+            }
+
+            public String getJsonApiModel(){
+                return jsonApiModel;
+            }
+        }
 }

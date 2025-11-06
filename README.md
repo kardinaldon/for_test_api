@@ -6,17 +6,17 @@
 CrptApi crptApi = new CrptApi(TimeUnit.SECONDS, requestLimit);
 ```
 
-- _указать адресс api(базовый пример для создания документов) и получить тело запроса(указаны базовые параметры):_
+- _указать адресс api(указан базовый для создания документов) и получить тело запроса(базовые параметры заданы):_
 
 ```
 String url = "https://ismp.crpt.ru/api/v3/api/v3/lk/documents/create?pg=milk";
 String requestBody = CrptApi.ApiModel.getInstance().getJsonApiModel();
 ```
 
-- _вопользоваться методом "sendApiCall" (пример использования):_
+- _вопользоваться методом "createDocument" (пример использования):_
 
 ```
-Optional<HttpResponse<String>> response = crptApi.sendApiCall(url, "POST", requestBody);
+Optional<HttpResponse<String>> response = crptApi.createDocument(url, "POST", requestBody);
                 if (!response.isEmpty()){
                     System.out.println(response.get().statusCode());
                     System.out.println(response.get().body());

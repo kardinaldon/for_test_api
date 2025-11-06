@@ -69,7 +69,7 @@ private class CrptApi {
 
             private ApiModel() {}
 
-            public static ApiModel getInstance() {
+            public static ApiModel getInstance() throws JsonProcessingException {
                 if(INSTANCE == null) {
                     INSTANCE = new ApiModel();
 
@@ -91,3 +91,4 @@ private class CrptApi {
             }
         }
 }
+

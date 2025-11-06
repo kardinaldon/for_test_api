@@ -6,32 +6,14 @@
 CrptApi crptApi = new CrptApi(TimeUnit.SECONDS, requestLimit);
 ```
 
-- _указать адресс api:_
+- _указать адресс api(базовый пример для создания документов) и получить тело запроса(указаны базовые параметры):_
 
 ```
-String url = "https://markirovka.demo.crpt.tech/api/v3/lk/documents/create?pg=milk";
+String url = "https://ismp.crpt.ru/api/v3/api/v3/lk/documents/create?pg=milk";
+String requestBody = CrptApi.ApiModel.getInstance().getJsonApiModel();
 ```
 
-- _вести необходимые параметры тела запроса в модель(пример модели):_
-
-```
-public class TestApiModel{
-            public static String buildApiTestModel() throws JsonProcessingException {
-                ObjectMapper mapper = new ObjectMapper();
-
-                ObjectNode apiModel = mapper.createObjectNode();
-                apiModel.put("document_format", "MANUAL");
-                apiModel.put("product_document",
-                        Base64.getEncoder().encodeToString(("product_document").getBytes()));
-                apiModel.put("product_group", "1 clothes");
-                apiModel.put("type", "LP_INTRODUCE_GOODS");
-
-                return mapper.writeValueAsString(apiModel);
-            }
-        }
-```
-
-- _вопользоваться его методом:_
+- _вопользоваться методом "sendApiCall":_
 
 ```
 Optional<HttpResponse<String>> response = crptApi.sendApiCall(url, "POST", requestBody);

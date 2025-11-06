@@ -13,7 +13,7 @@ String url = "https://ismp.crpt.ru/api/v3/api/v3/lk/documents/create?pg=milk";
 String requestBody = CrptApi.ApiModel.getInstance().getJsonApiModel();
 ```
 
-- _вопользоваться методом "sendApiCall":_
+- _вопользоваться методом "sendApiCall" (пример использования):_
 
 ```
 Optional<HttpResponse<String>> response = crptApi.sendApiCall(url, "POST", requestBody);

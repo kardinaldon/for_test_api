@@ -21,7 +21,7 @@ private class CrptApi {
         this.lastRefillTime = System.currentTimeMillis();
     }
 
-    public Optional<HttpResponse<String>> sendApiCall(String url, String httpMethod, String requestBody) throws Exception {
+    public Optional<HttpResponse<String>> createDocument(String url, String httpMethod, String requestBody) throws Exception {
         if (crptApi.tryAcquire()) {
             HttpClient client = HttpClient.newHttpClient();
             System.out.println(url);
@@ -91,4 +91,5 @@ private class CrptApi {
             }
         }
 }
+
 
